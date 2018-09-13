@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-header {
@@ -7,4 +9,16 @@
   height: 150px;
   padding: 20px;
   color: white;
+}
+
+ul>div {
+  display: flex;
+  list-style-type: none;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px;
+}
+
+ul>div>button {
+  margin-left: 20px;
 }
