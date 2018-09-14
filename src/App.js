@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import { ThemeProvider, injectGlobal } from 'styled-components';
 import Header from './components/Header.js';
 import TodoList from './components/TodoList.js';
 import Footer from './components/Footer.js';
+import StyledApp, { theme } from './styles/StyledApp';
 
 class App extends Component {
   constructor(props){
@@ -40,24 +41,39 @@ class App extends Component {
   render() {
     const { todos, todo, show } = this.state;
     return (
-      <div className="App">
-        <Header
-            handleChange={this.handleChange}
-            addTodo={this.addTodo}
-            todo={todo}
-        />
-        <TodoList
-            todos={todos}
-            show={show}
-            toggleCompleted={this.toggleCompleted}
-            deleteTodo={this.deleteTodo}
-        />
-        {todos.length>0 && <Footer
-            toggleShow={this.toggleShow}
-        />}
-      </div>
+      <ThemeProvider theme={theme}>
+        <StyledApp>
+          <Header
+              handleChange={this.handleChange}
+              addTodo={this.addTodo}
+              todo={todo}
+          />
+          <TodoList
+              todos={todos}
+              show={show}
+              toggleCompleted={this.toggleCompleted}
+              deleteTodo={this.deleteTodo}
+          />
+          {todos.length>0 && <Footer
+              toggleShow={this.toggleShow}
+          />}
+        </StyledApp>
+      </ThemeProvider>
     );
   }
 }
+
+injectGlobal`
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  ${'' /* body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  } */}
+`;
 
 export default App;

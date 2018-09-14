@@ -1,11 +1,13 @@
 import React from 'react';
-import Todo from './Todo.js';
+import Todo from './Todo';
+import StyledItem from '../styles/Item';
+import Button from '../styles/Button';
 
 const Item = ({ todo, toggleCompleted, deleteTodo }) => (
-  <div>
+  <StyledItem>
     <Todo todo={todo} toggleCompleted={()=>toggleCompleted(todo.id)} />
-    <button onClick={()=>deleteTodo(todo.id)}>Delete</button>
-  </div>
+    <Button itemButton onClick={()=>deleteTodo(todo.id)}>Delete</Button>
+  </StyledItem>
 );
 
 export default Item;

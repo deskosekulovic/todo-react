@@ -1,13 +1,13 @@
 import React from 'react';
+import Li from '../styles/Li';
 
 const Todo = ({ todo, toggleCompleted }) => (
-    <li
-      id={todo.id}
+    <Li
       onClick={toggleCompleted}
-      className={todo.completed ? 'completed':''}
+      completed={todo.completed}
     >
       {todo.todo}
-    </li>
+    </Li>
 );
 
 export default Todo;

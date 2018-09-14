@@ -1,11 +1,13 @@
 import React from 'react';
+import StyledFooter from '../styles/Footer';
+import Button from '../styles/Button';
 
 const Footer = ({ toggleShow }) => (
-  <div className="footer">
-    <button onClick={()=>toggleShow('uncompleted')}>Uncompleted</button>
-    <button onClick={()=>toggleShow('completed')}>Completed</button>
-    <button onClick={()=>toggleShow('')}>All</button>
-  </div>
+  <StyledFooter>
+    <Button onClick={()=>toggleShow('uncompleted')}>Uncompleted</Button>
+    <Button onClick={()=>toggleShow('completed')}>Completed</Button>
+    <Button onClick={()=>toggleShow('')}>All</Button>
+  </StyledFooter>
 );
 
 export default Footer;

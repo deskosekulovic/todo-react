@@ -1,7 +1,8 @@
 import React from 'react';
+import Form from '../styles/Form';
 
 const Header = ({ todo, handleChange, addTodo }) => (
-  <form onSubmit={addTodo}>
+  <Form onSubmit={addTodo}>
     <input
       type="text"
       autoFocus
@@ -9,7 +10,7 @@ const Header = ({ todo, handleChange, addTodo }) => (
       value={todo}
       onChange={handleChange}
     />
-  </form>
+  </Form>
 );
 
 export default Header;
