@@ -1,38 +1,18 @@
 import React from 'react';
-import Todo from './Todo.js';
+import Item from './Item.js';
 
 const TodoList = ({ todos, show, toggleCompleted, deleteTodo }) => {
-  if(show){
     let completed;
     completed = show==='uncompleted' && false;
     completed = show==='completed' && true;
     return(
       <ul>
-        {todos.map(todo=> todo.completed===completed &&
-            (
-              <div key={todo.id}>
-                <Todo todo={todo} toggleCompleted={()=>toggleCompleted(todo.id)} />
-                <button id={todo.id} onClick={()=>deleteTodo(todo.id)}>Delete</button>
-              </div>
-          )
-
+        {todos.map((todo,i)=> show ? todo.completed===completed &&
+            <Item key={i} todo={todo} toggleCompleted={toggleCompleted} deleteTodo={deleteTodo} />
+           : <Item key={i} todo={todo} toggleCompleted={toggleCompleted} deleteTodo={deleteTodo} />
         )}
       </ul>
     );
-  }
-  return(
-    <ul>
-      {todos.map(todo=>{
-          return (
-            <div key={todo.id}>
-              <Todo todo={todo} toggleCompleted={()=>toggleCompleted(todo.id)} />
-              <button id={todo.id} onClick={()=>deleteTodo(todo.id)}>Delete</button>
-            </div>
-        )
-      })}
-    </ul>
-  );
-
 }
 
 export default TodoList;

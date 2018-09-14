@@ -16,9 +16,8 @@ class App extends Component {
 
   handleChange = e => this.setState({todo: e.target.value});
 
-  onSubmit = e => e.preventDefault();
-
-  addTodo = () => {
+  addTodo = (e) => {
+    e.preventDefault();
     if(this.state.todo.trim().length===0){
       this.setState({todo: ''});
       return;
@@ -46,9 +45,22 @@ class App extends Component {
     const { todos, todo, show } = this.state;
     return (
       <div className="App">
-        <Header onSubmit={this.onSubmit} handleChange={this.handleChange} addTodo={this.addTodo} todo={todo} />
-        <TodoList todos={todos} show={show} toggleCompleted={this.toggleCompleted} deleteTodo={this.deleteTodo} />
-        <Footer showUncompleted={this.showUncompleted} showCompleted={this.showCompleted} showAll={this.showAll} />
+        <Header
+            handleChange={this.handleChange}
+            addTodo={this.addTodo}
+            todo={todo}
+        />
+        <TodoList
+            todos={todos}
+            show={show}
+            toggleCompleted={this.toggleCompleted}
+            deleteTodo={this.deleteTodo}
+        />
+        {todos.length>0 && <Footer
+            showUncompleted={this.showUncompleted}
+            showCompleted={this.showCompleted}
+            showAll={this.showAll}
+        />}
       </div>
     );
   }

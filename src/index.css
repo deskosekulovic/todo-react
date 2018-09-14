@@ -5,6 +5,7 @@ body {
 }
 .completed {
   text-decoration: line-through;
+  color: #f44336;
 }
 .hidden {
   display: none;
