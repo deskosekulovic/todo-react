@@ -33,11 +33,7 @@ class App extends Component {
   }
   toggleCompleted = id => this.setState({todos: this.state.todos.map(el => el.id===id ? Object.assign({}, el, {completed: !el.completed}) : el)});
 
-  showUncompleted = () => this.setState({show:'uncompleted'});
-
-  showCompleted = () => this.setState({show:'completed'});
-
-  showAll = () => this.setState({show:''});
+  toggleShow = show => this.setState({show});
 
   deleteTodo = id => this.setState({todos: this.state.todos.filter(el => el.id!==id && Object.assign({}, el))});
 
@@ -57,9 +53,7 @@ class App extends Component {
             deleteTodo={this.deleteTodo}
         />
         {todos.length>0 && <Footer
-            showUncompleted={this.showUncompleted}
-            showCompleted={this.showCompleted}
-            showAll={this.showAll}
+            toggleShow={this.toggleShow}
         />}
       </div>
     );

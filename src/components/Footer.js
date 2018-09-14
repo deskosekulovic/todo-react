@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Footer = ({ showUncompleted, showCompleted, showAll }) => (
+const Footer = ({ toggleShow }) => (
   <div className="footer">
-    <button onClick={showUncompleted}>Uncompleted</button>{" "}
-    <button onClick={showCompleted}>Completed</button>{" "}
-    <button onClick={showAll}>All</button>
+    <button onClick={()=>toggleShow('uncompleted')}>Uncompleted</button>
+    <button onClick={()=>toggleShow('completed')}>Completed</button>
+    <button onClick={()=>toggleShow('')}>All</button>
   </div>
 );
 
