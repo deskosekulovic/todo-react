@@ -6,37 +6,53 @@ import Footer from './components/Footer.js';
 import StyledApp, { theme } from './styles/StyledApp';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       todos: [],
       todo: '',
       show: ''
-    }
+    };
   }
 
-  handleChange = e => this.setState({todo: e.target.value});
+  handleChange = e => this.setState({ todo: e.target.value });
 
-  addTodo = (e) => {
+  addTodo = e => {
     e.preventDefault();
-    if(this.state.todo.trim().length===0){
-      this.setState({todo: ''});
+    if (this.state.todo.trim().length === 0) {
+      this.setState({ todo: '' });
       return;
     }
     this.setState({
-      todos: [...this.state.todos, {
-        todo: this.state.todo,
-        id: Math.random(),
-        completed: false
-      }],
+      todos: [
+        ...this.state.todos,
+        {
+          todo: this.state.todo,
+          id: Math.random(),
+          completed: false
+        }
+      ],
       todo: ''
     });
-  }
-  toggleCompleted = id => this.setState({todos: this.state.todos.map(el => el.id===id ? Object.assign({}, el, {completed: !el.completed}) : el)});
+  };
+  toggleCompleted = id =>
+    this.setState({
+      todos: this.state.todos.map(
+        el =>
+          el.id === id
+            ? Object.assign({}, el, { completed: !el.completed })
+            : el
+      )
+    });
 
-  toggleShow = show => this.setState({show});
+  toggleShow = show => this.setState({ show });
 
-  deleteTodo = id => this.setState({todos: this.state.todos.filter(el => el.id!==id && Object.assign({}, el))});
+  deleteTodo = id =>
+    this.setState({
+      todos: this.state.todos.filter(
+        el => el.id !== id && Object.assign({}, el)
+      )
+    });
 
   render() {
     const { todos, todo, show } = this.state;
@@ -44,19 +60,17 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <StyledApp>
           <Header
-              handleChange={this.handleChange}
-              addTodo={this.addTodo}
-              todo={todo}
+            handleChange={this.handleChange}
+            addTodo={this.addTodo}
+            todo={todo}
           />
           <TodoList
-              todos={todos}
-              show={show}
-              toggleCompleted={this.toggleCompleted}
-              deleteTodo={this.deleteTodo}
+            todos={todos}
+            show={show}
+            toggleCompleted={this.toggleCompleted}
+            deleteTodo={this.deleteTodo}
           />
-          {todos.length>0 && <Footer
-              toggleShow={this.toggleShow}
-          />}
+          {todos.length > 0 && <Footer toggleShow={this.toggleShow} />}
         </StyledApp>
       </ThemeProvider>
     );
@@ -69,11 +83,6 @@ injectGlobal`
     padding: 0;
     font-family: sans-serif;
   }
-  ${'' /* body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  } */}
 `;
 
 export default App;

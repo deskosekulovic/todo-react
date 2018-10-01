@@ -5,8 +5,7 @@ const StyledItem = styled.div`
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
   justify-content: end;
-  grid-template-areas:
-  "li . button";
+  grid-template-areas: 'li . button';
   list-style-type: none;
   padding: ${props => props.theme.padding};
   background: ${props => props.theme.backgroundItem};

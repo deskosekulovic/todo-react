@@ -16,9 +16,9 @@ const StyledApp = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-row-gap: 1em;
   grid-template-areas:
-  ". form ."
-  ". content ."
-  ". footer .";
+    '. form .'
+    '. content .'
+    '. footer .';
   background: ${props => props.theme.backgroundApp};
   padding: ${props => props.theme.padding};
 `;
