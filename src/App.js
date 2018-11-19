@@ -19,29 +19,24 @@ class App extends Component {
 
   addTodo = e => {
     e.preventDefault();
-    if (this.state.todo.trim().length === 0) {
-      this.setState({ todo: '' });
-      return;
+    if (this.state.todo.trim().length > 0) {
+      this.setState({
+        todos: [
+          ...this.state.todos,
+          {
+            todo: this.state.todo,
+            id: Math.random(),
+            completed: false
+          }
+        ],
+        todo: ''
+      });
     }
-    this.setState({
-      todos: [
-        ...this.state.todos,
-        {
-          todo: this.state.todo,
-          id: Math.random(),
-          completed: false
-        }
-      ],
-      todo: ''
-    });
   };
   toggleCompleted = id =>
     this.setState({
-      todos: this.state.todos.map(
-        el =>
-          el.id === id
-            ? Object.assign({}, el, { completed: !el.completed })
-            : el
+      todos: this.state.todos.map(el =>
+        el.id === id ? Object.assign({}, el, { completed: !el.completed }) : el
       )
     });
 

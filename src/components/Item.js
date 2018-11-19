@@ -5,8 +5,10 @@ import Button from '../styles/Button';
 
 const Item = ({ todo, toggleCompleted, deleteTodo }) => (
   <StyledItem>
-    <Todo todo={todo} toggleCompleted={()=>toggleCompleted(todo.id)} />
-    <Button itemButton onClick={()=>deleteTodo(todo.id)}>Delete</Button>
+    <Todo todo={todo} toggleCompleted={() => toggleCompleted(todo.id)} />
+    <Button itemButton onClick={() => deleteTodo(todo.id)}>
+      Delete
+    </Button>
   </StyledItem>
 );
 
